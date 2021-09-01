@@ -8,6 +8,7 @@ from typing import Any, Iterator, List, Optional
 
 import aiohttp
 from bs4 import BeautifulSoup
+
 from service_modules.db_connection import (
     DataBaseConnection,
     create_db_table,
