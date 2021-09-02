@@ -1,10 +1,10 @@
+"""
+Module to interact with a user and run functions for chosen operations.
+"""
+
 import os
 
-from service_modules.db_connection import (
-    DataBaseConnection,
-    create_db_table,
-    insert_rows,
-)
+from service_modules.db_connection import DataBaseConnection
 from service_modules.scraper import scrape_and_save
 from service_modules.setup_data import Cities
 from service_modules.visualizer import visualize_data
@@ -13,13 +13,26 @@ DB_NAME = "real_estate.db"
 DIRECTORY = os.path.abspath(os.path.dirname(__file__))
 
 
-def get_data_date(city):
+def get_data_date(city: str) -> str:
+    """
+    Function to return date of a database table creation.
+    :param city: name of the city, which is also a database table name
+    :type city: str
+    :return: date of a database table creation
+    :rtype str
+    """
     with DataBaseConnection(DB_NAME) as conn:
         date = conn.cursor.execute(f"""SELECT creation_date FROM {city}""").fetchone()
-        return date
+        return date[0]
 
 
-def choose_mode(choice):
+def choose_mode(choice: str) -> None:
+    """
+    Function to interact with a user and perform a chosen operation.
+    :param choice: city abbreviation of a chosen city
+    :type choice: str
+    :return: None
+    """
     city = Cities(choice)
     date = get_data_date(city.name)
     mode = input(
@@ -37,11 +50,12 @@ Or input 'b' to return to main menu.
     if mode == "v":
         visualize_data(city.name, city.center_coordinates, DIRECTORY, DB_NAME)
     if mode == "c":
-        scrape_and_save(DIRECTORY, DB_NAME, city.name, city.domain, city.search_url)
+        scrape_and_save(DIRECTORY, DB_NAME, city.name, city.homepage, city.search_url)
     return
 
 
 def main():
+    """Main function to interact with a user when script is run"""
     while True:
         choice = input(
             """
@@ -55,7 +69,6 @@ or 'q' to exit.
         if choice == "q":
             exit()
         elif choice in ["ekb", "msk", "spb"]:
-            print(choice)
             choose_mode(choice)
         else:
             print("Invalid input.")

@@ -1,3 +1,8 @@
+"""
+Module to create a context manager for a database
+and and define functions for database table creation and data insertion
+"""
+
 import sqlite3
 from datetime import date
 
@@ -36,8 +41,12 @@ class DataBaseConnection:
         self.connection.close()
 
 
-def create_db_table(table):
-    """Function to create new table for a city"""
+def create_db_table(table: str):
+    """
+    Function to create new table for a city.
+    :param table: name of the city to create a table for it
+    :type table: str
+    """
     table_structure = f"""
     id integer PRIMARY KEY NULL,
     district VARCHAR NOT NULL,
@@ -51,7 +60,13 @@ def create_db_table(table):
     return f"CREATE TABLE IF NOT EXISTS {table} ({table_structure});"
 
 
-def insert_rows(table, data_row):
-    """Function to save data to a table of a city"""
+def insert_rows(table: str, data_row: tuple):
+    """
+    Function to insert a data row to a table of a city.
+    :param table: name of the table to insert data
+    :type table: str
+    :param data_row: data to insert into table row
+    :type data_row: tuple
+    """
     columns = "'district', 'longitude', 'latitude', 'area', 'price', 'price_per_meter'"
     return f"INSERT INTO {table} ({columns}) VALUES {data_row};"

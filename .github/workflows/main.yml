@@ -20,4 +20,3 @@ jobs:
           ls -la
           black --check .
           isort --profile=black --check .
-          py.test tests
