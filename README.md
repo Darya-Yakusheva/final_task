@@ -1,17 +1,17 @@
-# epam_final_task
-Final task in EPAM Python training
+# final_task
+Final task in Python training
 
-## Вариант 7
-### Визуализация цен недвижимости
+### Real Estate Price Visualization
 
-0. Найти (crawling с сайтов недвижимости) актуальную базу данных по стоимости недвижимости в Санкт-Петербурге, Москве, Екатеринбурге
+0. Find (crawling from real estate websites) an up-to-date database of real estate prices in St. Petersburg, Moscow, and Yekaterinburg
 
-На основе собранных данных сделать следующие виды визуализации:
-1. Тепловая карта цен недвижимости. Представляет из себя карту города с наложенным на неё слоем, в котором цветом показана цена недвижимости в пересчёте на квадратный метр.
-2. Гистограмма с отображением средних цен по муниципальным округам указанных выше городов
-3. Гистограмма с отображением средней площади квартиры по муниципальным округам указанных выше городов
+Based on the collected data, create the following types of visualizations:
 
-Под визуализацией понимается png картинка с достаточным разрешением. При желании это может быть так же web frontend или оконное приложение.
+1. Heat map of real estate prices. This is a city map with an overlaid layer where color shows the price of real estate calculated per square meter.
+2. Histogram displaying average prices by municipal districts of the above-mentioned cities
+3. Histogram displaying average apartment area by municipal districts of the above-mentioned cities
+
+Visualization means a PNG image with sufficient resolution. If desired, this can also be a web frontend or desktop application.
 
 ___
 
